@@ -8,6 +8,7 @@ import Paper from 'material-ui/lib/paper'
 
 import { LPGridList } from './gridList';
 import { LPTable } from './table';
+import { LPTabs } from './tabs';
 
 const history = useBasename(createHistory)({
   basename: '/animations'
@@ -33,8 +34,7 @@ class AppBody extends React.Component {
 
     return (<div>
       <AppBar title="Code Generator" />
-        <h2 style={{marginLeft: 20}}>Record type description</h2>
-      <Paper zDepth={1} style={{margin: 20}}><LPTable /></Paper>
+      <LPTabs />
 
 
     </div>
