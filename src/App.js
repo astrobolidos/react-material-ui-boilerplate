@@ -9,6 +9,7 @@ import Paper from 'material-ui/lib/paper'
 import { LPGridList } from './gridList';
 import { LPTable } from './table';
 import { LPTabs } from './tabs';
+import { Knob } from './jqueryKnob/knob'
 
 const history = useBasename(createHistory)({
   basename: '/animations'
@@ -33,8 +34,9 @@ class AppBody extends React.Component {
     const { pathname } = this.props.location
 
     return (<div>
-      <AppBar title="Code Generator" />
-      <LPTabs />
+      <AppBar title="Test Appr" />
+
+      <Knob />
 
 
     </div>

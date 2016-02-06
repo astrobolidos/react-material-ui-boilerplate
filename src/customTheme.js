@@ -10,7 +10,7 @@ module.exports = {
     primary2Color: Colors.blueGrey700,
     primary3Color: Colors.lightBlack,
     accent1Color: "#FF9800",
-    accent2Color: Colors.grey100,
+    accent2Color: Colors.grey500,
     accent3Color: Colors.grey500,
     textColor: '#212121',
     alternateTextColor: '#FFFFFF',
