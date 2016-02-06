@@ -11,6 +11,7 @@ import { LPTable } from './table';
 import { LPTabs } from './tabs';
 import { Knob } from './jqueryKnob/knob'
 import { D3 } from './d3/d3'
+import { D3Knob } from './d3/dial'
 
 var sampleData = [
   {id: '5fbmzmtc', x: 7, y: 41, z: 6},
@@ -49,6 +50,7 @@ class AppBody extends React.Component {
 
       <D3 data={this.state.data} domain={{x: [0, 30], y: [0, 100]}}/>
 
+      <D3Knob />
 
     </div>
     )
