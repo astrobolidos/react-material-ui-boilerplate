@@ -10,6 +10,12 @@ import { LPGridList } from './gridList';
 import { LPTable } from './table';
 import { LPTabs } from './tabs';
 import { Knob } from './jqueryKnob/knob'
+import { D3 } from './d3/d3'
+
+var sampleData = [
+  {id: '5fbmzmtc', x: 7, y: 41, z: 6},
+  {id: 's4f8phwm', x: 11, y: 45, z: 9},
+];
 
 const history = useBasename(createHistory)({
   basename: '/animations'
@@ -30,17 +36,30 @@ injectTapEventPlugin();
 
 @ThemeDecorator(ThemeManager.getMuiTheme(MyRawTheme))
 class AppBody extends React.Component {
-  render() {
+  constructor(props) {
+    super(props)
+    this.state = { data: sampleData }
+  }
+
+  render = () => {
     const { pathname } = this.props.location
 
     return (<div>
-      <AppBar title="Test Appr" />
+      <AppBar title="Test Appr" onClick={this.onClick}/>
 
-      <Knob />
+      <D3 data={this.state.data} domain={{x: [0, 30], y: [0, 100]}}/>
 
 
     </div>
     )
+  }
+
+  onClick = () => {
+    console.log('onClick')
+    let data = this.state.data;
+    data.push({id: '5fbmz432'+Math.random(), x: (Math.random() * (12-1) + 1), y: (Math.random() * (22-1) + 1), z: 3})
+
+    this.setState({data:data})
   }
 }
 
