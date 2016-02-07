@@ -41,12 +41,12 @@ d3Chart.create = function(el, props, state) {
           .attr("d", arc.endAngle(twoPi));
 
       foreground = meter.append("path")
-          .attr("class", "foreground")
+          .attr("class", "foreground"+props.id)
           .attr("fill", "#2E7AF9");
 
       var text = meter.append("text")
           .attr("text-anchor", "middle")
-          .attr("class", "text")
+          .attr("class", "text"+props.id)
           .attr("font-size", "40px")
           text.text(formatPercent(state.val));
 
@@ -55,7 +55,7 @@ d3Chart.create = function(el, props, state) {
           .attr("text-anchor", "middle")
           .attr("class", "text2");
 
-      text2.text('progress completed');
+      text2.text('progress');
 
 
   this.update(el, props, state);
@@ -71,8 +71,8 @@ d3Chart.update = function(el, props, state) {
 
   var i = d3.interpolate(progress, percentage);
 
-  var text = d3.select(el).select('.text');
-  var foreground = d3.select(el).select('.foreground');
+  var text = d3.select(el).select('.text'+props.id);
+  var foreground = d3.select(el).select('.foreground'+props.id);
 
   var  arc = d3.svg.arc()
             .startAngle(0)
@@ -80,7 +80,7 @@ d3Chart.update = function(el, props, state) {
             .outerRadius(props.width/2)
         ;
 
-  d3.transition().duration(1200).tween("progress", function (el) {
+  d3.select(el).transition().duration(1200).tween("progress", function (el) {
       return function (t, el) {
           progress = i(t);
           console.log(progress)

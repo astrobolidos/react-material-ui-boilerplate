@@ -11,16 +11,18 @@ export class D3Knob extends React.Component {
   componentDidMount = () => {
     let el =  ReactDOM.findDOMNode(this);
     d3Chart.create(el, {
-      width: 120,
-      height: 120
+      id: this.props.name,
+      width: 200,
+      height: 200
     }, this.getChartState());
   }
 
   componentDidUpdate = () => {
     let el =  ReactDOM.findDOMNode(this);
     d3Chart.update(el, {
-      width: 120,
-      height: 120
+      id: this.props.name,
+      width: 200,
+      height: 200
     }, this.getChartState());
   }
 
@@ -37,7 +39,7 @@ export class D3Knob extends React.Component {
 
   render () {
     return (
-      <div className="completion-chart" style={{float:'left', border:'1px solid blue'}}></div>
+      <div id={"completion-chart" + this.props.name} style={{float:'left', margin: 20}}></div>
     );
   }
 }

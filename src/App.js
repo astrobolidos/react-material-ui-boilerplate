@@ -39,7 +39,7 @@ injectTapEventPlugin();
 class AppBody extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { data: sampleData, val: 0.6 }
+    this.state = { data: sampleData, val: [0.6, 0.7, 0.32, 0.44, 0.2, 0.3, 0.4,0.5,0.6] }
   }
 
       // <D3 data={this.state.data} domain={{x: [0, 30], y: [0, 100]}}/>
@@ -49,10 +49,15 @@ class AppBody extends React.Component {
     return (<div>
       <AppBar title="Test Appr" onClick={this.onClick}/>
 
-
-
-      <D3Knob val={this.state.val}/>
-
+      <D3Knob name={'k1'} val={this.state.val[0]}/>
+      <D3Knob name={'k2'} val={this.state.val[1]}/>
+      <D3Knob name={'k3'} val={this.state.val[2]}/>
+      <D3Knob name={'k4'} val={this.state.val[3]}/>
+      <D3Knob name={'k5'} val={this.state.val[4]}/>
+      <D3Knob name={'k6'} val={this.state.val[5]}/>
+      <D3Knob name={'k7'} val={this.state.val[6]}/>
+      <D3Knob name={'k8'} val={this.state.val[7]}/>
+      <D3Knob name={'k9'} val={this.state.val[8]}/>
     </div>
     )
   }
@@ -62,9 +67,13 @@ class AppBody extends React.Component {
     let data = this.state.data;
     data.push({id: '5fbmz432'+Math.random(), x: (Math.random() * (12-1) + 1), y: (Math.random() * (22-1) + 1), z: 3})
 
-    var val = Math.random() * (1-0) + 0
+    var vals = this.state.val;
+    for (var i = 0; i < vals.length; i++) {
+      vals[i] = Math.random() * (1-0) + 0;
+    }
 
-    this.setState({data:data, val:val})
+
+    this.setState({data:data, val:vals})
   }
 }
 
