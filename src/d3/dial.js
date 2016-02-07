@@ -11,20 +11,22 @@ export class D3Knob extends React.Component {
   componentDidMount = () => {
     let el =  ReactDOM.findDOMNode(this);
     d3Chart.create(el, {
-      width: 370,
-      height: 370
+      width: 120,
+      height: 120
     }, this.getChartState());
   }
 
   componentDidUpdate = () => {
     let el =  ReactDOM.findDOMNode(this);
-    d3Chart.update(el, this.getChartState());
+    d3Chart.update(el, {
+      width: 120,
+      height: 120
+    }, this.getChartState());
   }
 
   getChartState = () => {
     return {
-      data: this.props.data,
-      domain: this.props.domain
+      val: this.props.val
     };
   }
 

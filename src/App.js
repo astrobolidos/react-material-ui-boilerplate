@@ -39,18 +39,19 @@ injectTapEventPlugin();
 class AppBody extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { data: sampleData }
+    this.state = { data: sampleData, val: 0.6 }
   }
 
+      // <D3 data={this.state.data} domain={{x: [0, 30], y: [0, 100]}}/>
   render = () => {
     const { pathname } = this.props.location
 
     return (<div>
       <AppBar title="Test Appr" onClick={this.onClick}/>
 
-      <D3 data={this.state.data} domain={{x: [0, 30], y: [0, 100]}}/>
 
-      <D3Knob />
+
+      <D3Knob val={this.state.val}/>
 
     </div>
     )
@@ -61,7 +62,9 @@ class AppBody extends React.Component {
     let data = this.state.data;
     data.push({id: '5fbmz432'+Math.random(), x: (Math.random() * (12-1) + 1), y: (Math.random() * (22-1) + 1), z: 3})
 
-    this.setState({data:data})
+    var val = Math.random() * (1-0) + 0
+
+    this.setState({data:data, val:val})
   }
 }
 
